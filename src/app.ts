@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import router from "./router";
+import routerAdmin from "./routerAdmin";
 
 /** 1-ENTRANCE **/
 const app = express();
@@ -17,6 +18,7 @@ app.set("views", path.join(__dirname, "views"));  //EJS filelarni qayerdan qidir
 app.set("view engine", "ejs"); //HTML sahifani qaysi formatda o‘qishni aytyapti
 
 /** 4-ROUTERS **/
-app.use("/", router); //Middleware Desigin Pattern
+app.use("/admin", routerAdmin); // BSSR: EJS
+app.use("/", router); //SPA: REACT            //Middleware Desigin Pattern
 
-export default app;
+export default app; 

@@ -1,15 +1,24 @@
+# TASK - N
+def palindromCheck(word):
+   
+    return word == word[::-1]
+
+print(palindromCheck("man"))
+print(palindromCheck("dad"))
+
+
 # TASK -M
-def getSquareNumbers(arr):
+# def getSquareNumbers(arr):
 
-    result = []
+#     result = []
 
-    for number in arr:
-        result.append({"number": number, "square": number**2})
+#     for number in arr:
+#         result.append({"number": number, "square": number**2})
 
 
-    return result
+#     return result
 
-print(getSquareNumbers([1, 4, 6]))
+# print(getSquareNumbers([1, 4, 6]))
 
 # TASK -L
 # def reverse_sentence(sentence):

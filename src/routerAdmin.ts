@@ -2,10 +2,17 @@ import express from "express";
 const routerAdmin = express.Router();
 import restauranController from "./controllers/restaurant.controller";
 
+/** Restuarant */
 routerAdmin.get("/", restauranController.goHome);
+routerAdmin
+.get("/login", restauranController.getLogin)
+.post("/login", restauranController.processLogin);
+routerAdmin
+.get("/signup", restauranController.getSignup)
+.post("/signup", restauranController.processSignup);
 
-routerAdmin.get("/login", restauranController.getLogin);
+/** Product */
+/** User */
 
-routerAdmin.get("/signup", restauranController.getSignup);
 
 export default routerAdmin;

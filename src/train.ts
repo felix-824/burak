@@ -3,8 +3,8 @@
    - Naming standatds
       function, method, variable => CAMEL    goHome
       class => PASCAL                        MemberService
-      folder => KEBAB
+      folder, file => KEBAB
       css => SNAKE                          button_style
    - Erorr handling
-      
+
  */

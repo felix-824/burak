@@ -1,10 +1,25 @@
-# TASK - N
-def palindromCheck(word):
-   
-    return word == word[::-1]
+# TASK - O
+def calculateSumOfNumbers(arr):
+    
+    total = 0
+    
+    for item in arr:
+        
+        if isinstance(item, int) and item is not True and item is not False:
+            total += item
+            
+    return total
 
-print(palindromCheck("man"))
-print(palindromCheck("dad"))
+print(calculateSumOfNumbers([11, "10", {"son": 9}, True, 21]))
+
+
+# TASK - N
+# def palindromCheck(word):
+
+#     return word == word[::-1]
+
+# print(palindromCheck("man"))
+# print(palindromCheck("dad"))
 
 
 # TASK -M

@@ -1,16 +1,29 @@
-# TASK - O
-def calculateSumOfNumbers(arr):
-    
-    total = 0
-    
-    for item in arr:
-        
-        if isinstance(item, int) and item is not True and item is not False:
-            total += item
-            
-    return total
+# TASK - P
+def objectToArray(obj):
+    result = []
 
-print(calculateSumOfNumbers([11, "10", {"son": 9}, True, 21]))
+    for key, value in obj.items():
+        result.append([key, value])
+
+    return result
+
+
+print(objectToArray({"a": 4, "b": 30}))
+
+
+# TASK - O
+# def calculateSumOfNumbers(arr):
+
+#     total = 0
+
+#     for item in arr:
+
+#         if isinstance(item, int) and item is not True and item is not False:
+#             total += item
+
+#     return total
+
+# print(calculateSumOfNumbers([11, "10", {"son": 9}, True, 21]))
 
 
 # TASK - N

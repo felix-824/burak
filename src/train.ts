@@ -14,3 +14,8 @@
    Rest Api 
    GraphQL Api
 */
+
+/*
+ Traditional Frontend Develop  => BSSR (Admin) => RJS
+ Modern  Frontend Develop => SPA (USER) => REACT
+*/

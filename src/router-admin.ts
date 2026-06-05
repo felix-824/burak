@@ -8,8 +8,8 @@ routerAdmin
 .get("/login", restauranController.getLogin)
 .post("/login", restauranController.processLogin);
 routerAdmin
-.get("/signup", restauranController.getSignup)
-.post("/signup", restauranController.processSignup);
+.get("/signup", restauranController.getSignup)   //CALL
+.post("/signup", restauranController.processSignup); 
 
 /** Product */
 /** User */

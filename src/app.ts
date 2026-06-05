@@ -21,7 +21,7 @@ app.set("views", path.join(__dirname, "views"));  //EJS filelarni qayerdan qidir
 app.set("view engine", "ejs"); //HTML sahifani qaysi formatda o‘qishni aytyapti
 
 /** 4-ROUTERS **/
-app.use("/admin", routerAdmin); // BSSR: EJS
+app.use("/admin", routerAdmin); // SSR: EJS
 app.use("/", router); //SPA: REACT            //Middleware Desigin Pattern
 
 export default app; 

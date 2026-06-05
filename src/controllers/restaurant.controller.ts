@@ -4,22 +4,15 @@ import MemberService from "../models/Member.service";
 import { LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 
-const restauranController: T = {};
+const memberService = new MemberService();
+
+const restauranController: T = {}; //objectga keyinchalik istalgan property qo'shiladi.
 restauranController.goHome = (req: Request, res: Response) => {
   try {
     console.log('goHome');
     res.send("Home Page");
   } catch (err) {
     console.log("Error, goHome:", err);
-  }
-};
-
-restauranController.getLogin = (req: Request, res: Response) => {
-  try {
-    console.log('getLogin');
-    res.send("Login Page");
-  } catch (err) {
-    console.log("Error, getLogin:", err);
   }
 };
 
@@ -33,22 +26,17 @@ restauranController.getSignup = (req: Request, res: Response) => {
   }
 };
 
-restauranController.processLogin = async (req: Request, res: Response) => {
+restauranController.getLogin = (req: Request, res: Response) => {
   try {
-    console.log('processLogin');
-    console.log("body:", req.body);
-    const input: LoginInput = req.body;
-
-    const memberService = new MemberService();
-    const result = await memberService.processLogin(input);
-
-    res.send(result);
+    console.log('getLogin');
+    res.send("Login Page");
   } catch (err) {
-    console.log("Error, processLogin:", err);
-    res.send(err); 
+    console.log("Error, getLogin:", err);
   }
 };
 
+
+//DEFINE
 restauranController.processSignup = async (req: Request, res: Response) => {
   try {
     console.log('processSignup');
@@ -56,10 +44,9 @@ restauranController.processSignup = async (req: Request, res: Response) => {
   
     const newMember: MemberInput = req.body;
     newMember.memberType = MemberType.RESTAURANT;
-
     console.log(2);
-    const memberService = new MemberService(); 
-    const result = await memberService.processSignup(newMember);
+    const result = await memberService.processSignup(newMember); // call - argument
+    // TODO: SESSIONS AUTHENTICATION
     console.log(6);
 
     res.send(result);
@@ -69,5 +56,22 @@ restauranController.processSignup = async (req: Request, res: Response) => {
     res.send(err);
   }
 };
+
+//DEFINE
+restauranController.processLogin = async (req: Request, res: Response) => {
+  try {
+    console.log('processLogin');
+   
+    const input: LoginInput = req.body;
+    const result = await memberService.processLogin(input);
+    // TODO: SESSIONS AUTHENTICATION
+
+    res.send(result);
+  } catch (err) {
+    console.log("Error, processLogin:", err);
+    res.send(err); 
+  }
+};
+
 
 export default restauranController;

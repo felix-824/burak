@@ -10,7 +10,7 @@ const restauranController: T = {}; //objectga keyinchalik istalgan property qo's
 restauranController.goHome = (req: Request, res: Response) => {
   try {
     console.log('goHome');
-    res.send("Home Page");
+    res.render("home");
   } catch (err) {
     console.log("Error, goHome:", err);
   }
@@ -19,7 +19,7 @@ restauranController.goHome = (req: Request, res: Response) => {
 restauranController.getSignup = (req: Request, res: Response) => {
   try {
     console.log('getSignup');
-    res.send("Signup Page");
+    res.render("signup");
     // send | json | redirect | end | render
   } catch (err) {
     console.log("Error, getSignup:", err);
@@ -29,7 +29,7 @@ restauranController.getSignup = (req: Request, res: Response) => {
 restauranController.getLogin = (req: Request, res: Response) => {
   try {
     console.log('getLogin');
-    res.send("Login Page");
+    res.render("login");
   } catch (err) {
     console.log("Error, getLogin:", err);
   }

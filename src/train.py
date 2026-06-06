@@ -1,14 +1,20 @@
+# TASK - Q
+def hasProperty(obj, prop):
+
+    return prop in obj
+
+print(hasProperty({"name": "Jek"}, "name"))
+print(hasProperty({"age": "20"}, "name"))
 # TASK - P
-def objectToArray(obj):
-    result = []
+# def objectToArray(obj):
+#     result = []
 
-    for key, value in obj.items():
-        result.append([key, value])
+#     for key, value in obj.items():
+#         result.append([key, value])
 
-    return result
+#     return result
 
-
-print(objectToArray({"a": 4, "b": 30}))
+# print(objectToArray({"a": 4, "b": 30}))
 
 
 # TASK - O

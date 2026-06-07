@@ -11,6 +11,9 @@ routerAdmin
 .get("/signup", restauranController.getSignup)   //CALL
 .post("/signup", restauranController.processSignup); 
 
+
+routerAdmin
+.get("/check-me", restauranController.checkAuthSession);
 /** Product */
 /** User */
 

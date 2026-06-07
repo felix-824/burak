@@ -10,10 +10,9 @@ routerAdmin
 routerAdmin
 .get("/signup", restauranController.getSignup)   //CALL
 .post("/signup", restauranController.processSignup); 
+routerAdmin.get("/logout", restauranController.logout);
+routerAdmin.get("/check-me", restauranController.checkAuthSession);
 
-
-routerAdmin
-.get("/check-me", restauranController.checkAuthSession);
 /** Product */
 /** User */
 

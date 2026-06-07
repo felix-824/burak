@@ -14,6 +14,7 @@ restauranController.goHome = (req: Request, res: Response) => {
     res.render("home");
   } catch (err) {
     console.log("Error, goHome:", err);
+    res.redirect("/admin")
   }
 };
 
@@ -24,6 +25,7 @@ restauranController.getSignup = (req: Request, res: Response) => {
     // send | json | redirect | end | render
   } catch (err) {
     console.log("Error, getSignup:", err);
+    res.redirect("/admin")
   }
 };
 
@@ -33,6 +35,7 @@ restauranController.getLogin = (req: Request, res: Response) => {
     res.render("login");
   } catch (err) {
     console.log("Error, getLogin:", err);
+    res.redirect("/admin")
   }
 };
 
@@ -58,7 +61,10 @@ restauranController.processSignup = async (req: AdminRequest, res: Response) => 
   } catch (err) {
     console.log(7);
     console.log("Error, processSignup:", err);
-    res.send(err);
+      const message = err instanceof Error ? err.message : Message.SOMETHING_WENT_WRONG
+     res.send(
+      `<script> alert ("${message}"); window. location.replace('admin/signup)</script>`);
+  
   }
 };
 
@@ -77,7 +83,21 @@ restauranController.processLogin = async (req: AdminRequest, res: Response) => {
 
   } catch (err) {
     console.log("Error, processLogin:", err);
-    res.send(err); 
+    const message = err instanceof Error ? err.message : Message.SOMETHING_WENT_WRONG
+     res.send(
+      `<script> alert ("${message}"); window. location.replace ('admin/login)</script>`);
+  }
+};
+
+restauranController.logout = async (req: AdminRequest, res: Response) => {
+  try {
+    console.log('logout');
+   req.session.destroy(function() {
+    res.redirect("/admin");
+   });
+  } catch (err) {
+    console.log("Error, logout:", err);
+    res.redirect("/admin"); 
   }
 };
 
@@ -85,7 +105,8 @@ restauranController.processLogin = async (req: AdminRequest, res: Response) => {
 restauranController.checkAuthSession = async (req: AdminRequest, res: Response) => {
   try {
     console.log('checkAuthSession');
-    if(req.session?.member) res.send(`<script> alert ("${req.session.member.memberNick}") </script>`);
+    if(req.session?.member)
+       res.send(`<script> alert ("${req.session.member.memberNick}") </script>`);
     else res.send(`<script> alert ("${Message.NOT_AUTHENTICATED}") </script>`);
   } catch (err) {
     console.log("Error, checkAuthSession:", err);

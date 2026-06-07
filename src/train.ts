@@ -19,3 +19,8 @@
  Traditional Frontend Develop  => BSSR (Admin) => RJS
  Modern  Frontend Develop => SPA (USER) => REACT
 */
+
+/*
+  request join
+  selfdestroy
+*/

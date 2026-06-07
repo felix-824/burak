@@ -1,10 +1,26 @@
+# TASK - R
+def calculate(expression):
+
+    parts = expression.split()
+
+    num1 = int(parts[0])
+    operator = parts[1]
+    num2 = int(parts[2])
+
+    if operator == "+":
+
+        return num1 + num2
+
+
+print(calculate("5 + 5"))
+
 # TASK - Q
-def hasProperty(obj, prop):
+# def hasProperty(obj, prop):
 
-    return prop in obj
+#     return prop in obj
 
-print(hasProperty({"name": "Jek"}, "name"))
-print(hasProperty({"age": "20"}, "name"))
+# print(hasProperty({"name": "Jek"}, "name"))
+# print(hasProperty({"age": "20"}, "name"))
 # TASK - P
 # def objectToArray(obj):
 #     result = []

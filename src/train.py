@@ -1,18 +1,32 @@
+# TASK - S
+def missingNumber(arr):
+
+    n = len(arr)
+
+    total_sum = n * (n + 1) // 2
+
+    current_sum = sum(arr)
+
+    return total_sum - current_sum
+
+
+print(missingNumber([3, 0, 1]))
+
 # TASK - R
-def calculate(expression):
+# def calculate(expression):
 
-    parts = expression.split()
+#     parts = expression.split()
 
-    num1 = int(parts[0])
-    operator = parts[1]
-    num2 = int(parts[2])
+#     num1 = int(parts[0])
+#     operator = parts[1]
+#     num2 = int(parts[2])
 
-    if operator == "+":
+#     if operator == "+":
 
-        return num1 + num2
+#         return num1 + num2
 
 
-print(calculate("5 + 5"))
+# print(calculate("5 + 5"))
 
 # TASK - Q
 # def hasProperty(obj, prop):

@@ -33,6 +33,10 @@ memberPassword: {
     required:true
 },
 
+memberImage: {
+  type: String,
+},
+
  memberAddres: {
     type: String,
  },

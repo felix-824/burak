@@ -3,7 +3,7 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import { Message } from "../libs/Errors";
+import Errors, { HttpCode, Message } from "../libs/Errors";
 
 const memberService = new MemberService();
 
@@ -44,22 +44,22 @@ restauranController.getLogin = (req: Request, res: Response) => {
 restauranController.processSignup = async (req: AdminRequest, res: Response) => {
   try {
     console.log('processSignup');
-    console.log(1);
-  
+    const file = req.file;
+    if (!file)
+      throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
+
     const newMember: MemberInput = req.body;
+    newMember.memberImage = file?.path;
     newMember.memberType = MemberType.RESTAURANT;
-    console.log(2);
     const result = await memberService.processSignup(newMember); // call - argument
     // TODO: SESSIONS AUTHENTICATION
 
     req.session.member = result;
     req.session.save(function() {
-      res.send(result);
+      res.redirect("/admin/product/all");
     });
 
-    console.log(6);
   } catch (err) {
-    console.log(7);
     console.log("Error, processSignup:", err);
       const message = err instanceof Error ? err.message : Message.SOMETHING_WENT_WRONG
      res.send(
@@ -78,7 +78,7 @@ restauranController.processLogin = async (req: AdminRequest, res: Response) => {
     // TODO: SESSIONS AUTHENTICATION
      req.session.member = result;
     req.session.save(function() {
-      res.send(result);
+       res.redirect("/admin/product/all");
     });
 
   } catch (err) {

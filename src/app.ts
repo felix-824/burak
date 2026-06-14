@@ -26,6 +26,7 @@ app.use(morgan(MORGAN_FORMAT)); // Logging standard
 
 
 /** 2-SESSIONS **/
+//REQ.+SESSION > tamgani yaratdi + tamgani tasdiqladi
 app.use(
     session({
         secret:  String(process.env.SESSION_SECRET),
@@ -33,13 +34,13 @@ app.use(
             maxAge: 1000 * 3600 * 6, //6h
         },
         store: store,
-        resave: true,
-        saveUninitialized: true
+        resave: true,            //Har requestda sessionni qayta saqlaydi.
+        saveUninitialized: true  //Hali login qilmagan odam uchun ham session yaratadi.
     })
 );
 app.use(function (req, res, next) {
     const sessionInstance = req.session as T;
-    res.locals.member = sessionInstance.member;
+    res.locals.member = sessionInstance.member;  //EJS ichida ishlatish uchun.
     next();
 });
 

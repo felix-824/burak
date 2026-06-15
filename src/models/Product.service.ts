@@ -13,7 +13,7 @@ class ProductService {
     /** SPA*/
 
     /** SSR*/
-     public async getAllProducts(): Promise<Product[]> {
+     public async getAllProducts(): Promise<Product[]> { //MongoDB ichidagi barcha productlarni olib kelish
        const result = await this.productModel
        .find() .exec();
        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);

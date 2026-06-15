@@ -1,16 +1,28 @@
+# TASK - T
+def mergeSortedArrays(arr1, arr2):
+
+    result = arr1 + arr2
+
+    result.sort()
+
+    return result
+
+
+print(mergeSortedArrays([5, 1, 7], [9, 3]))
+
 # TASK - S
-def missingNumber(arr):
+# def missingNumber(arr):
 
-    n = len(arr)
+#     n = len(arr)
 
-    total_sum = n * (n + 1) // 2
+#     total_sum = n * (n + 1) // 2
 
-    current_sum = sum(arr)
+#     current_sum = sum(arr)
 
-    return total_sum - current_sum
+#     return total_sum - current_sum
 
 
-print(missingNumber([3, 0, 1]))
+# print(missingNumber([3, 0, 1]))
 
 # TASK - R
 # def calculate(expression):

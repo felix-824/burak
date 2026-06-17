@@ -80,6 +80,7 @@ restauranController.processLogin = async (req: AdminRequest, res: Response) => {
     req.session.save(function() {
        res.redirect("/admin/product/all");
     });
+  
 
   } catch (err) {
     console.log("Error, processLogin:", err);
@@ -98,6 +99,28 @@ restauranController.logout = async (req: AdminRequest, res: Response) => {
   } catch (err) {
     console.log("Error, logout:", err);
     res.redirect("/admin"); 
+  }
+};
+
+restauranController.getUsers = async (req: Request, res: Response) => {
+  try {
+    console.log('getUsers');
+    const result = await memberService.getUsers();
+    console.log("result", result);
+
+    res.render("users", {users: result });
+  } catch (err) {
+    console.log("Error, getUsers:", err);
+    res.redirect("/admin/login")
+  }
+};
+
+restauranController.updateChosenUser = (req: Request, res: Response) => {
+  try {
+    console.log('updateChosenUser');
+    res.render("login");
+  } catch (err) {
+    console.log("Error, updateChosenUser:", err);
   }
 };
 

@@ -32,8 +32,8 @@ class MemberService {
     // TODO: Consider member status later  
     const member = await this.memberModel
     .findOne(
-      {memberNick: input.memberNick},
-      {memberNick: 1, memberPassword: 1}
+      {memberNick: input.memberNick},    //Feltir
+      {memberNick: 1, memberPassword: 1} //Projection
     )
     .exec();
    if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
@@ -63,11 +63,8 @@ class MemberService {
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
 
      try {
-        console.log(4);
         const result = await this.memberModel.create(input);
         result.memberPassword = "";
-
-         console.log(5);
         return result;  
       }  catch (err) {
          throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
@@ -95,6 +92,15 @@ class MemberService {
 
    return await this.memberModel.findById(member._id).exec();
  } 
+
+  public async getUsers(): Promise<Member []> {
+    const result = await this.memberModel
+    .find({memberType: MemberType.USER })
+    .exec();
+  if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+  return result;
+    }
 }
 
 export default MemberService;

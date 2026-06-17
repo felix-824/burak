@@ -38,7 +38,13 @@ routerAdmin.post("/product/:id",
 /** User */
 routerAdmin.get("/user/all",
      restauranController.verifyRestaurant,
-     restauranController.getUsers);
+     restauranController.getUsers
+    );
+
+routerAdmin.post("/user/edit",
+     restauranController.verifyRestaurant,
+     restauranController.updateChosenUser
+    );
 
 
 

@@ -1,14 +1,32 @@
-# TASK - T
-def mergeSortedArrays(arr1, arr2):
+# TASK - V
+def countChars(text):
 
-    result = arr1 + arr2
+    result = {}
 
-    result.sort()
+    for char in text:
+
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
 
     return result
 
 
-print(mergeSortedArrays([5, 1, 7], [9, 3]))
+print(countChars("helloWorl"))
+
+
+# TASK - T
+# def mergeSortedArrays(arr1, arr2):
+
+#     result = arr1 + arr2
+
+#     result.sort()
+
+#     return result
+
+
+# print(mergeSortedArrays([5, 1, 7], [9, 3]))
 
 # TASK - S
 # def missingNumber(arr):

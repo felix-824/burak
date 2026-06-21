@@ -81,6 +81,7 @@
           </div>
         </div>
         <form
+         onsubmit="return validateForm()"
           action="/admin/product/create"
           method="POST"
           class="dish-container"
@@ -129,7 +130,7 @@
           <div class="half-input-frame">
             <div class="half-input">
               <label>Product Type</label>
-              <select class="product-collection" name="productCollection">
+              <select class="product-collection" name="Productcollection">
                 <option value="DISH" selected>Dish</option>
                 <option value="SALAD">Salad</option>
                 <option value="DESSERT">Dessert</option>
@@ -150,7 +151,7 @@
 
             <div class="half-input" id="product-volume" style="display: none">
               <label>Drink Volume</label>
-              <select class="product-volume" name="productVolume">
+              <select class="product-volume" name="ProductVolume">
                 <option value="0.5">0,5 liters</option>
                 <option value="1" selected>1 liters</option>
                 <option value="1.2">1,2 liters</option>
@@ -175,6 +176,7 @@
                   name="productImages"
                   class="image-one"
                   required
+                  onchange="previewFileHandler(this, 1)"
                 />
               </div>
               <div class="upload-img-box">
@@ -184,6 +186,7 @@
                   id="file"
                   name="productImages"
                   class="image-two"
+                   onchange="previewFileHandler(this, 2)"
                 />
               </div>
               <div class="upload-img-box">
@@ -193,6 +196,7 @@
                   id="file"
                   name="productImages"
                   class="image-three"
+                   onchange="previewFileHandler(this, 3)"
                 />
               </div>
               <div class="upload-img-box">
@@ -202,6 +206,7 @@
                   id="file"
                   name="productImages"
                   class="image-four"
+                   onchange="previewFileHandler(this, 4)"
                 />
               </div>
               <div class="upload-img-box">
@@ -211,6 +216,7 @@
                   id="file"
                   name="productImages"
                   class="image-five"
+                   onchange="previewFileHandler(this, 5)"
                 />
               </div>
               <input name="restaurantIid" class="restaurant-id" hidden />

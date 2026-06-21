@@ -13,7 +13,7 @@ export enum ProductVolume {
     TWO = 2,
 }
 
-export enum Productstatus {
+export enum ProductStatus {
     PAUSE = "PAUSE",
     PROCESS = "PROCESS",
     DELETE = "DELETE",

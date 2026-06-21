@@ -4,7 +4,7 @@ $(function() {
     const fileTarget = $(".file-box .upload-hidden");
     let fileneme;
 
-    fileTarget.on("change", function () {
+    fileTarget.on("change", function () {  
         if (window.FileReader) {
         const uploadFile = $(this) [0].files[0];
         console.log("uploadFile:", uploadFile);

@@ -1,14 +1,11 @@
-console.log("Users frontend javascript file");
-//const { response } = require("express");
+console.log("User frontend javascript file");
 
 $(function () {
     console.log("READY");
     $(".member-status").on("change", function (e) {
-        const id = e.target.id;
-        console.log("id:", id);
-
-        const memberStatus = $(`#${id}.member-status`).val();
-        console.log("memberStatus", memberStatus);
+        const id = e.target.id,
+          memberStatus = $(`#${id}.member-status`).val();
+    
 
         //TODO: Axios updateChosenUser
         axios
@@ -19,10 +16,8 @@ $(function () {
         .then(response => {
           console.log("response:", response);
           const result = response.data;
-          console.log("result:", result);
 
           if(result.data) {
-            console.log("User updated!");
            $(".member-status").blur(); 
           } else  alert("User update failed!");
         })

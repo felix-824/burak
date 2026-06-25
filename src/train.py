@@ -1,14 +1,33 @@
+# TASK - X
+def countOccurrences(obj, key_name):
+
+    count = 0
+
+    for key, value in obj.items():
+
+        if key == key_name:
+            count += 1
+
+        if isinstance(value, dict):
+            count += countOccurrences(value, key_name)
+
+    return count
+
+
+print(countOccurrences({"model": "A", "s": {"model": "B"}}, "model"))
+
+
 # TASK - W
-def chunkArray(arr, size):
-    result = []
+# def chunkArray(arr, size):
+#     result = []
 
-    for i in range(0, len(arr), size):
-        result.append(arr[i : i + size])
+#     for i in range(0, len(arr), size):
+#         result.append(arr[i : i + size])
 
-    return result
+#     return result
 
 
-print(chunkArray([1, 2, 3, 4, 5], 2))
+# print(chunkArray([1, 2, 3, 4, 5], 2))
 
 # TASK - V
 # def countChars(text):

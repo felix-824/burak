@@ -1,18 +1,34 @@
-# TASK - Y
-def findIntersection(arr1, arr2):
-    
-    result = []
-    
-    for item in arr1:
-        
-        if item in arr1:
-            
-            if item in arr2:
-                result.append(item)
-                
-    return result
+# TASK - Z
+def sumEvens(arr):
 
-print(findIntersection([4, 6, 8], [8, 4, 0]))            
+    total = 0
+
+    for number in arr:
+
+        if number % 2 == 0:
+            total += number
+
+    return total
+
+
+print(sumEvens([4, 6, 7]))
+
+
+# TASK - Y
+# def findIntersection(arr1, arr2):
+
+#     result = []
+
+#     for item in arr1:
+
+#         if item in arr1:
+
+#             if item in arr2:
+#                 result.append(item)
+
+#     return result
+
+# print(findIntersection([4, 6, 8], [8, 4, 0]))
 
 # TASK - X
 # def countOccurrences(obj, key_name):

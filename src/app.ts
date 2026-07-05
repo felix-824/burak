@@ -21,6 +21,7 @@ const store = new MongoDBStore({
 const app = express();
 console.log("__dirname:", __dirname);
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({extended: true}));  //form data ni o‘qish traditional apIga xizmat
 app.use(express.json());  /// REST api ga xizmat Midlweri
 app.use(cookieParser());

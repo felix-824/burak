@@ -29,8 +29,7 @@ class MemberService {
       }
     }
 
-   public async login(input: LoginInput): Promise<Member> {
-    // TODO: Consider member status later  
+   public async login(input: LoginInput): Promise<Member> { 
     const member = await this.memberModel
     .findOne(
       {
@@ -46,7 +45,7 @@ class MemberService {
    }
 
    const isMatch = await bcrypt.compare(
-    input.memberPassword,
+    input.memberPassword, 
      member.memberPassword
   );
    if(!isMatch) {
@@ -65,6 +64,19 @@ class MemberService {
  
     return result;
  }
+
+ public async updateMember(
+  member: Member,
+  input: MemberUpdateInput
+ ): Promise<Member> {
+  const memberId = shapeIntoMongooseObjectId(member._id);
+  const result = await this.memberModel
+   .findOneAndUpdate({_id: memberId}, input, {new: true})
+   .exec();
+   if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATR_FAILED);
+
+   return result;
+  }
 
     /** SSR */
 

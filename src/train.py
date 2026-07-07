@@ -1,17 +1,31 @@
+# TASK
+def compressString(text):
+    result = ""
+
+    for char in text:
+        if result == "" or result[-1] != char:
+            result += char
+
+    return result
+
+
+print(compressString("THANKSSSSSS"))
+
+
 # TASK - Z
-def sumEvens(arr):
+# def sumEvens(arr):
 
-    total = 0
+#     total = 0
 
-    for number in arr:
+#     for number in arr:
 
-        if number % 2 == 0:
-            total += number
+#         if number % 2 == 0:
+#             total += number
 
-    return total
+#     return total
 
 
-print(sumEvens([4, 6, 7]))
+# print(sumEvens([4, 6, 7]))
 
 
 # TASK - Y

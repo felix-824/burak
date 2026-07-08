@@ -1,15 +1,38 @@
 # TASK
-def compressString(text):
-    result = ""
+def extractNumbers(text):
+
+    result = []
+    current = ""
 
     for char in text:
-        if result == "" or result[-1] != char:
-            result += char
+
+        if char.isdigit():
+            current += char
+        else:
+            if current != "":
+                result.append(current)
+                current = ""
+
+    if current != "":
+        result.append(current)
 
     return result
 
 
-print(compressString("THANKSSSSSS"))
+print(extractNumbers("ab12cd345e6"))
+
+# TASK
+# def compressString(text):
+#     result = ""
+
+#     for char in text:
+#         if result == "" or result[-1] != char:
+#             result += char
+
+#     return result
+
+
+# print(compressString("THANKSSSSSS"))
 
 
 # TASK - Z

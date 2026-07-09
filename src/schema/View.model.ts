@@ -18,7 +18,7 @@ viewRefId: {
     type: Schema.Types.ObjectId,
     required: true,
 },
-} {timestamps: true}
+}, {timestamps: true}
 );
 
 export default mongoose.model('View', viewSchema);

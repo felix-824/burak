@@ -34,6 +34,15 @@ export interface ProductInput {
     productViews?: number;
 }
 
+export interface ProductInquiry {
+    order: string;
+    page: number;
+    limit: number;
+    productCollection?: Productcollection;
+    search?: string;
+}
+
+
 export interface ProductUpdateInput {
      _id: ObjectId;
     ProductStatus?: Productstatus;

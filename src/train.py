@@ -1,25 +1,50 @@
 # TASK
-def extractNumbers(text):
+def longestIncreasing(arr):
 
-    result = []
-    current = ""
+    if len(arr) == 0:
+        return 0
 
-    for char in text:
+    current = 1
+    longest = 1
 
-        if char.isdigit():
-            current += char
+    for i in range(1, len(arr)):
+
+        if arr[i] > arr[i - 1]:
+            current += 1
         else:
-            if current != "":
-                result.append(current)
-                current = ""
+            current = 1
 
-    if current != "":
-        result.append(current)
+        if current > longest:
+            longest = current
 
-    return result
+    return longest
 
 
-print(extractNumbers("ab12cd345e6"))
+print(longestIncreasing([1, 2, 3, 1, 2]))
+
+
+# TASK
+# def extractNumbers(text):
+
+#     result = []
+#     current = ""
+
+#     for char in text:
+
+#         if char.isdigit():
+#             current += char
+#         else:
+#             if current != "":
+#                 result.append(current)
+#                 current = ""
+
+#     if current != "":
+#         result.append(current)
+
+#     return result
+
+
+# print(extractNumbers("ab12cd345e6"))
 
 # TASK
 # def compressString(text):

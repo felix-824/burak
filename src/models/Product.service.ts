@@ -23,7 +23,6 @@ class ProductService {
     public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
       const match: T = {ProductStatus: ProductStatus.PROCESS };
       
-
       if (inquiry.productCollection)
          match.Productcollection = inquiry.productCollection;
       if (inquiry.search) {
@@ -54,7 +53,7 @@ class ProductService {
     public async getProduct(
       memberId: ObjectId | null,
        id: string
-      ): Promise<void> {
+      ): Promise<Product> {
     const productId = shapeIntoMongooseObjectId(id);
 
     let result = await this.productModel

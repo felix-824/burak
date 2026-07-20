@@ -34,15 +34,15 @@ class ProductService {
       ?{ [inquiry.order]: 1}
       :{ [inquiry.order]: -1};
 
-      console.log(match);
-      console.log(sort);
+      console.log(match); 
+      console.log(sort);  
       console.log(inquiry);
       const result = await this.productModel
       .aggregate([
-          {$match: match},
-          {$sort: sort}, 
-          {$skip: (inquiry.page * 1 - 1) * inquiry.limit },
-          {$limit: inquiry.limit * 1},
+          {$match: match},    //Filterlash "PROCESS da" "DISH"  search=Pasta
+          {$sort: sort},      //Saralash   Narx bo'yicha   creatdAt buyicha
+          {$skip: (inquiry.page  - 1) * inquiry.limit },   //Pagination  uchun ishlatiladi
+          {$limit: inquiry.limit },
       ])
       .exec();
      if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);

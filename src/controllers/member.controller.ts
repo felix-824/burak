@@ -131,7 +131,7 @@ memberController.verifyAuth = async (
   try {
     const token = req.cookies["accessToken"];
     if(token) req.member = await authService.checkAuth(token);
-
+    
     if (!req.member) 
       throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
 

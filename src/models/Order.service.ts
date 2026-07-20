@@ -23,13 +23,13 @@ class OrderService {
         member: Member,
         input: OrderItemInput[]
     ): Promise<Order>  {
+        
       const memberId = shapeIntoMongooseObjectId(member._id);
       const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
         return accumulator + item.itemPrice * item.itemQuantity;
       }, 0)
       const delivery = amount < 100 ? 5 : 0;
       
-
       try {
          const newOrder: Order = await this.orderModel.create({
             orderTotal: amount + delivery,
@@ -47,6 +47,7 @@ class OrderService {
         throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
       }
     }
+
     private async recordOrderItem(
         orderId: ObjectId,
         input: OrderItemInput[]
@@ -72,14 +73,14 @@ class OrderService {
          
         const result = await this.orderModel.aggregate([
            {$match: matches },
-           {$sort: { updateAt: -1 } },
+           {$sort: { updatedAt: -1 } },
            {$skip: (inquiry.page -1) * inquiry.limit}, 
            { $limit: inquiry.limit },
            {
              $lookup: {
                 from: "orderItems",
-                localField: "_id",
-                foreignField: "orderId",
+                localField: "_id",        // Orders -> _id 
+                foreignField: "orderId",   // OrderItems -> orderId
                 as: "orderItems",
              },
            },
@@ -104,15 +105,15 @@ class OrderService {
         input: OrderUpdateInput
     ): Promise<Order> {
       const memberId = shapeIntoMongooseObjectId(member._id),  
-        orderId = shapeIntoMongooseObjectId(input.orderId),
-        orderStatus = input.orderStatus;
+         orderId = shapeIntoMongooseObjectId(input.orderId),
+         orderStatus = input.orderStatus;
      
       const result = await this.orderModel
       .findByIdAndUpdate(
         {
         memberId: memberId,
         _id: orderId,
-      }, 
+        }, 
       {orderStatus: orderStatus },
       { new: true }
     )

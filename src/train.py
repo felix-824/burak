@@ -1,26 +1,51 @@
 # TASK
-def longestIncreasing(arr):
+def findPair(arr, target):
 
-    if len(arr) == 0:
-        return 0
+    left = 0
+    right = len(arr) - 1
 
-    current = 1
-    longest = 1
+    while left < right:
 
-    for i in range(1, len(arr)):
+        current_sum = arr[left] + arr[right]
 
-        if arr[i] > arr[i - 1]:
-            current += 1
+        if current_sum == target:
+            return [left, right]
+
+        elif current_sum < target:
+            left += 1
+
         else:
-            current = 1
+            right -= 1
 
-        if current > longest:
-            longest = current
-
-    return longest
+    return []
 
 
-print(longestIncreasing([1, 2, 3, 1, 2]))
+print(findPair([1, 2, 4, 6, 8], 10))
+
+
+#  TASK
+# def longestIncreasing(arr):
+
+#     if len(arr) == 0:
+#         return 0
+
+#     current = 1
+#     longest = 1
+
+#     for i in range(1, len(arr)):
+
+#         if arr[i] > arr[i - 1]:
+#             current += 1
+#         else:
+#             current = 1
+
+#         if current > longest:
+#             longest = current
+
+#     return longest
+
+
+# print(longestIncreasing([1, 2, 3, 1, 2]))
 
 
 # TASK

@@ -24,7 +24,7 @@ class ProductService {
       const match: T = {ProductStatus: ProductStatus.PROCESS };
       
       if (inquiry.productCollection)
-         match.Productcollection = inquiry.productCollection;
+         match.productCollection = inquiry.productCollection;
       if (inquiry.search) {
          match.productName = { $regex: new RegExp(inquiry.search, "i")};
       }
@@ -108,6 +108,7 @@ class ProductService {
 
     public async createNewProduct(input: ProductInput): Promise<Product> {
          try {
+           
             return await this.productModel.create(input);
       }  catch (err) {
         console.error("Error, model:createNewProduct:", err);

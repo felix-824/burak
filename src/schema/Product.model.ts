@@ -1,6 +1,6 @@
 import mongoose, {Schema} from "mongoose";
 import ProductService from "../models/Product.service";
-import { Productcollection, ProductSize, ProductStatus, ProductVolume } from "../libs/enums/product.enum";
+import { ProductCollection, ProductSize, ProductStatus, ProductVolume } from "../libs/enums/product.enum";
 
 const productSchema = new Schema(
   {
@@ -10,9 +10,9 @@ const productSchema = new Schema(
     default: ProductStatus.PAUSE
   },
 
-   Productcollection: {
+   productCollection: {
     type: String,
-    enum: Productcollection,
+    enum: ProductCollection,
     required: true,
   },
 
